@@ -1,0 +1,2 @@
+set pcname DHCP_PC.0
+dhcp
