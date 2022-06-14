@@ -1,0 +1,37 @@
+MAC address -> ipconfig /all -> Ethernet adpter Ethernet -> Physical Address XX-XX-XX-XX-XX-XX
+
+
+"arp -a" -> Mostra os ip's conhecidos ( são dinamicos: são removidos se n usados )
+
+"arp -s <ip> <MAC Address>" -> Guarda o ip de forma estática (nunca é removido)
+"arp -s" -> Verificar outra vez
+
+ipv4
+padding
+
+
+Comandos PC:
+ip 192.1.1.XX 255.255.255.0 gateway 192.1.1.YY
+
+
+Router:
+#conf t 
+#int f0/0
+#no shut 
+#ip address 192.1.1.11 255.255.255.0
+#end 
+#write
+
+#show ip int brief -> para ver as configurações do router
+
+Quando é feito um ping só é possível ver o arp's e icmp's nesse mesmo "sítio"
+#show arp -> arp table
+
+NAT translates private addresses to public addresses, it does this by using a NAT table
+to keep a record of this translations
+
+UDP é mais rapido do que o TCP pq se esta a cagar para o facto de a data cgegar toda e 
+intacta, mas o TCP é melhor pq garante que a data chegue toda e intacta e caso nao aconteça 
+reenvia a data
+
+DHCP atribui endereços ip
