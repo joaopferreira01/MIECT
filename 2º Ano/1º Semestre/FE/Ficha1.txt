@@ -1,0 +1,105 @@
+EXERCICIO 1
+
+-100*(1,1)^0 + 30(1,1)^-1  + 30(1,1)^-2  + 30(1,1)^-3 + 30(1,1)^-4  + 30(1,1)^-5 = 13 Mil
+
+
+EXERCICIO 2
+
+100(1,08)*5 + 200(1,08)*4 + 300(1,08)*3 + 300(1,08)*2 + 400(1,08)*1 = 1578,86€
+
+100(1,08)*0 + 200(1,08)*-1 + 300(1,08)*-2 + 300(1,08)*-3 + 400(1,08)*-4 = 1074,55€
+
+
+EXERCICIO 3
+
+ALINE A
+
+6% de juros anuais  com capitalização trimestral ( 4 trimestres de 3 meses )
+
+it = 6% => 6/4 = 1,5%
+
+Taxa anual efetiva : ia = (1+0,015)^4 - 1 = 0,0614 * 100 = 6,14%
+
+
+ALINEA B
+
+it = 6% => 6/12 = 0,5%
+
+Taxa anual efetiva : ia = (1+0,005)^12 - 1 = 0,0617 * 100 = 6,17%
+
+
+ALINEA C
+
+it = 6% => 6/365 = 0,01644%
+
+Taxa anual efetiva : ia = (1+0,0001644)^365 - 1 = 0,0618  * 100 = 6,18%
+
+
+EXERCICIO 4
+
+Valor futuro dos 100€   : Cn = 100(1+0,04)^10 = 148€
+Valor presente dos 140€ : 140 = C0(1,04)^10 <=> C0 = 94€
+
+Logo é melhor receber os 100€ hoje
+
+
+EXERCICIO 5
+
+ALINEA A
+
+Cn = 1M(1+0,05*0,5) <=> Cn = 1.025.000€
+
+
+ALINEA B
+ 
+Taxa efetiva anual de 5%
+1.000.000(1+0,05)^0,5 = 1.024.695
+
+ALINEA C
+
+it = 4,8% => 4,8/2 = 2,4%
+
+Taxal efetiva : ia (1+0,024)^1 - 1
+
+1.000.000(1+0,024)^1 = 1.024.000 => 2,4%
+
+ALINEA D
+
+Taxa efetiva quadrimestral de 1,7%
+1.000.000(1+0,017)^1,5  = 1.025.608€ 
+
+Logo a melhor alternativa é a d
+
+
+
+EXERCICIO 6
+
+15 = (1+i/3)^3 - 1
+
+
+
+EXERCICIO 7
+
+ALINEA A
+
+1 janeiro 2021 
+Depósito de 1000€ a 1 de janeiro de 2021
+Regime composto de 8% anual
+Em 2025 (?)
+
+Cn = 1000(1+0,08)^3 <=> Cn = 1259,71€
+
+ALINEA B
+
+250(1,08)^3 + 250(1,08)^2 + 250(1,08)^1 + 250 = 1126,53€
+
+
+EXERCICIO 8
+
+A) Verdadeiro
+
+B) Falso, porque não há juros
+
+C) Falso, as vendas refletem-se na demonstração de resultados
+
+D) Verdadeiro 
