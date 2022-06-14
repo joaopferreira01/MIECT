@@ -1,0 +1,23 @@
+How to Make a Text File
+
+There are many kinds of files on a computer. You can see DOC files, RTF files, EXE files, GIFs, JPGs, and many others. Each of these files was created by an application which knew how to read the file and process its contents.
+
+The simplest type of file is called a "text file". This may or may NOT have a ".txt" extension. A text file is a file that is stored with very few bytes except for the actual codes for the characters it contains. A text file created by, say, Notepad, that contains 4 words may be no more than 25 or 30 bytes (note, NOT Megabytes or Kilobytes, just bytes!). Compare that to a Microsoft Word DOC file with the same four words in it- it will be at least 20 Kilobytes. Why the difference? because Word stores a lot of extra information about the document - formatting characters, the author's name, margin settings, font settings, etc.
+
+A programmer should be aware of what type of file he or she is creating. All these types have their uses and are NOT generally interchangeable.
+
+Our assignments will usually say "create a text file". It may be for an input data file, it might be an output capture file, it might be a design for a program, it might be a test plan.
+
+Hint: if you are using Windows, set the Folder Properties so that you can see the file extensions. It makes it much easier to understand!
+
+How do you create a text file? There are several ways:
+
+The editor in your IDE will do fine. The thing to remember is that you want to save the file with an extension that is NOT .py, if the file does not contain Python code. Must the extension be .txt? not necessarily, but it is very common for text files to have that extension.
+Notepad is an editor that will create text files. It is located in "All Programs", under "Accessories" on a Windows machine.
+There are other editors that will also work. Be aware of the format of the file you are saving - usually there is a box that gives you a choice.
+Microsoft Word CAN create a text file, but you MUST save it correctly. You must choose the "Save as Type" of Plain Text (*.txt). If you use the default type, you get a DOC file. It is NOT sufficient in Word just to type in a filename of "myfile.txt" in the Save window. If the TYPE of the file is not set correctly (i.e, to "Plain Text"), this will create a file named "myfile.txt.doc", which is still a doc file!
+WordPad will save a text file, but again, the default type is RTF (Rich Text). This is NOT a text file! Try to load an RTF file into Notepad and you will see all the other data in there.
+How to make the Mac OS editor TextEdit save as plain text
+Why do we ask for text files?
+
+They are simpler and faster to creat
