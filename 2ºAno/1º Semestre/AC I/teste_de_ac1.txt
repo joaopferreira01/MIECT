@@ -1,0 +1,56 @@
+SIZE é numero de elementos
+	.space é SIZE*4
+
+com array:
+
+
+		.data
+	str1: 	.asciiz "Result is "
+	str2:	.asciiz "Maximo/min são: "
+	val:	.word 8,4,15,-1987,327,-9,27,16
+		.eqv SIZE,8
+		.eqv print_string,4
+		.eqv print_int10,1
+		.eqv print_char,11
+		.eqv read_int,5
+		.text
+		.globl main
+
+main:
+				# trabalhar com o array
+	la	$t2,array
+	sll	$t3,$t0,2
+	addu	$t4,$t3,$t2
+	lw	$t1,0($t4)
+	
+	li	$t0,0
+do:
+	
+	sll	$t6,$t0,2
+	addu	$t6,$t6,$t2
+	li	$v0,print_int10
+	lw	$a0,0($t6)
+	syscall			# print do array
+
+
+
+
+
+sem array
+(Se tiver que ler o array, antes de declarar o array colocar align 2)
+
+
+
+
+
+
+	sll 	$t4,$t1,2
+	addu	$t4,$t4,$t3
+	
+for3:
+	bge 	$t3,$t4,efor3
+	li	$v0,print_int10
+	lw	$a0,0($t3)
+	syscall				# print do array
+	addiu	$t3,$t3,4
+	j	for3

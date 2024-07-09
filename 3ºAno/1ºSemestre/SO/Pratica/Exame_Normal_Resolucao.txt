@@ -1,0 +1,90 @@
+Grupo I - Scheduler
+
+Exercício 1
+
+- As três políticas de scheduling são a First-Come, First-Served (FCFS), 
+Shortest Job First (SJF) e Round Robin (RR).
+
+- A política RR é a única preemptive, pois é a única onde um processo pode
+ser interrompido por outro com uma maior prioridade durante a sua execução
+
+- A política RR é mais adequada a sistemas interativos, pois distribui o
+tempo de CPU, permitindo responder rapidamente a entradas do usuário.
+
+- As outras duas são mais adequadas a sistemas batch pois, uma delas 
+prioriza as tarefas com duração mais curtas, aumentando a eficiência e
+diminuindo o tempo de espera das tarefas (SJF). A outra (FCFS) processa
+as tarefas por ordem de chegada, sem priorização.
+
+
+Exercício 2 (Desenhar no enunciado)
+Exercício 3 (Dizer turnaround e ready time, com valores do enunciado)
+
+Grupo II
+
+Exercício 1 (Dada a seguinte foto)
+
+Register P 	-> Armazena o endereço base do PT.
+
+Register PT 	-> Armazena o endereço base da memória física.
+
+Exercício 2 (No idea)
+Exercício 3 (No idea)
+
+Exercício 4
+
+i -
+
+Registos Base 	-> É o endereço físico onde pode começar o espaço do 
+endereçamento do processo.
+
+Registos Limite -> É o número de bytes necessários para o processo, ou
+seja, o tamanho em bytes do endereçamento lógico do processo.
+
+ii - (Procedimento de tradução de endereço lógico para físico):
+
+Se o endereço lógico for maior que o registo limite, é lançada uma exceção
+pois está fora do espaço de endereçamento do processo. Caso contrario, o
+endereço logico é somado ao registo base. Esse é o endereço físico 
+correspondente.
+
+Exercício 5 (Tabela)
+Esta merda é tao fácil seu boneco
+
+LRU (Least Recently Used) 
+NRU (Not Recently First) 
+FIFO (First In, First Out) -> A que foi adicionada há mais tempo é a 
+primeira a ser substítuida.
+
+Razões pelas quais o LRU não é eficiente:
+
+- Pode ser removida informação importante antes de ser necessária
+
+O que faz o NRU:
+
+Quando a memória virtual precisa ser libertada para alocar uma nova página
+o NRU seleciona a página não referenciada e não modificada como a proxima
+a ser removida.
+
+Grupo III
+
+Race Condition 	-> É um problema que ocorre quando duas tarefas acessam e
+modificam a mesma informação de forma não coordenada, o que pode originar
+dados corrompidos.
+
+Mutual Exclusion -> É um mecanismo que garante que apenas uma tarefa tenha
+acesso a um recurso compartilhado de cada vez. 
+
+Ou seja, o Mutual Exclusion é usado para evitar que ocorra o Race Condition
+
+Grupo IV
+
+File System 	-> É a parte do sistema operacional responsável por gerenciar
+o acesso ao conteúdo de armazenamento em massa
+
+Min File Size = Cluster Size
+Max File Size = Cluster Size * nºmáx de clusters disponíveis
+
+FAT (File Allocation Table) é um sistema de arquivos que tem como função
+gerenciar o armazenamento de arquivos num dispositivo e manter a sua
+organização.

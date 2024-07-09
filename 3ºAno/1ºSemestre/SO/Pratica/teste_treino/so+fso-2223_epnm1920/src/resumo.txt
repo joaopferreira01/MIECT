@@ -1,0 +1,4 @@
+ir ao pfifo.h e descomentar o include thread.h
+escrever outra cena a seguir ao struct
+
+tirar thread do pfifo.cpp

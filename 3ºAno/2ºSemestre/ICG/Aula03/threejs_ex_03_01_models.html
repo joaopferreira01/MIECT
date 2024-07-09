@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<!--
+
+		threejs_ex_03_01_models.html
+
+		J. Madeira - March 2021
+
+-->
+
+<head>
+
+	<title>three.js example 01 &mdash; Some Models</title>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+	<style>
+		body {
+
+			background-color: #ffffff;
+
+			/* To use the complete page */
+
+			margin: 0px;
+
+			overflow: hidden;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- The library --- Can be a local version -->
+
+	<script type="text/javascript" src="http://threejs.org/build/three.js"></script>
+
+	<!-- Javascript code that runs the Three.js example -->
+
+	<script type="text/javascript">
+
+		function createTree(scaling) {
+
+			// Creating a model by grouping basic geometries
+
+			// Cylinder centered at the origin
+
+			const cylinderRadius = 5 + scaling;
+
+			const cylinderHeight = 20*scaling;
+
+			const cylinderGeometry = new THREE.CylinderGeometry(cylinderRadius, cylinderRadius, cylinderHeight, 32);
+
+			const redMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+
+			const cylinder = new THREE.Mesh(cylinderGeometry, redMaterial);
+
+			// Move base of the cylinder to y = 0
+
+			cylinder.position.y = cylinderHeight / 2.0;
+
+			// Cone
+
+			const baseConeRadius = 10;
+
+			const coneHeight = 30*scaling;
+
+			const coneGeometry = new THREE.ConeGeometry(baseConeRadius, coneHeight, 32);
+
+			const greenMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+			const cone = new THREE.Mesh(coneGeometry, greenMaterial);
+
+			// Move base of the cone to the top of the cylinder
+
+			cone.position.y = cylinderHeight + coneHeight / 2.0;
+
+			// Tree
+
+			var tree = new THREE.Group();
+
+			tree.add(cylinder);
+
+			tree.add(cone);
+
+			return tree;
+		}
+
+		// Once everything is loaded, run this function
+
+		function init() {
+
+			// The SCENE
+
+			var scene = new THREE.Scene();
+
+			// Plane Helper to represent the ZOX plane
+
+			const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0));
+
+			const planeHelper = new THREE.PlaneHelper(plane, 200, 0xaaaaaa);
+
+			scene.add(planeHelper);
+
+			// The coordinate axes
+
+			var axes = new THREE.AxesHelper(15);
+
+			scene.add(axes);
+
+			// Adding models to the scene
+
+			var tree_1 = createTree(1);
+
+			tree_1.position.x = -50;
+
+			tree_1.position.z = -25;
+
+			scene.add(tree_1);
+
+			var tree_2 = createTree(1);
+
+			tree_2.position.x = 50;
+
+			tree_2.position.z = 25;
+
+			scene.add(tree_2);
+
+			var tree_3 = createTree(2);
+
+			tree_3.position.x = 50;
+
+			tree_3.position.z = -25;
+
+			scene.add(tree_3);
+
+			var tree_4 = createTree(1);
+
+			tree_4.position.x = -50;
+
+			tree_4.position.z = 25;
+
+			scene.add(tree_4);
+
+			// The CAMERA --- A camera is added to the scene
+
+			// --- Where the viewer is and how he is looking at the scene
+
+			var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 400);
+
+			camera.position.y = 50;
+
+			camera.position.z = 150;
+
+			// Point the camera to the center of the scene
+
+			camera.lookAt(scene.position);
+
+			scene.add(camera)
+
+			// The RENDERER --- To display the scene on the Web page
+
+			var renderer = new THREE.WebGLRenderer({ antialias: true });
+
+			renderer.setClearColor(new THREE.Color(0xffffff));
+
+			renderer.setPixelRatio(window.devicePixelRatio);
+
+			renderer.setSize(window.innerWidth, window.innerHeight);
+
+			// Add the output of the renderer
+
+			document.body.appendChild(renderer.domElement);
+
+			// Render the scene
+
+			renderer.render(scene, camera);
+		}
+
+		window.onload = init
+
+	</script>
+
+</body>
+
+</html>

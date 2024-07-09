@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<!--
+
+		threejs_ex_01_02_a_cube.html
+
+		Simple example: a cube
+
+		J. Madeira - March 2021
+
+		Adapted / simplified from 
+
+		https://github.com/mrdoob/three.js/blob/master/examples/webgl_geometry_cube.html
+
+-->
+
+<head>
+
+	<title>three.js example 02 &mdash; A cube</title>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+	<style>
+		body {
+
+			background-color: #ffffff;
+
+			/* To use the complete page */
+
+			margin: 0px;
+
+			overflow: hidden;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- The library --- Can be a local version -->
+
+	<script type="text/javascript" src="http://threejs.org/build/three.js"></script>
+
+	<!-- Javascript code that runs the Three.js example -->
+
+	<script type="text/javascript">
+
+		// Once everything is loaded, run this function
+
+		function init() {
+
+			// The SCENE
+
+			var scene = new THREE.Scene();
+
+			// addCubeToScene(10, 0, 0, 0, 0x00ff00, scene);
+
+			var geometry = new THREE.BoxGeometry(7, 7, 7);
+			var material = new THREE.MeshLambertMaterial({color : 0xff0000});
+
+
+
+			const rubix = []
+
+			for (let i = 0; i < 3; i++) {
+				for (let j = 0; j < 3; j++) {
+					for (let k = 0; k < 3; k++) {
+						rubix.push(new THREE.Mesh(geometry, material))
+						rubix[rubix.length - 1].position.set(i * 10, j * 10, k * 10);
+						scene.add(rubix[rubix.length - 1])
+					}
+				}
+			}
+
+			// Luz
+
+			const light = new THREE.PointLight(0xffffff);
+			light.position.set(50, 50, 50);
+			scene.add(light);
+
+			// Eixo
+
+			const axesHelper = new THREE.AxesHelper(100);
+			scene.add(axesHelper);
+
+			// background
+
+			const wallColor = new THREE.Color(0x00000);
+			scene.background = wallColor;
+
+			// The MODEL --- A cube is added to the scene
+
+			// A box centred on the origin, with given width, height and depth
+
+			// var geometry = new THREE.BoxBufferGeometry(10, 10, 10);
+
+			// With a constant color
+
+			// var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+			// The cube 
+
+			// var cube = new THREE.Mesh(geometry, material);
+
+			// scene.add(cube);
+
+			// The CAMERA --- A camera is added to the scene
+
+			// --- Where the viewer is and how he is looking at the scene
+
+			var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+
+			camera.position.z = 50;
+			camera.position.y = 50;
+			camera.position.x = 50;
+
+			// Point the camera to the center of the scene
+
+			camera.lookAt(scene.position);
+
+			scene.add(camera)
+
+			// The RENDERER --- To display the scene on the Web page
+
+			var renderer = new THREE.WebGLRenderer({ antialias: true });
+
+			renderer.setClearColor(new THREE.Color(0xffffff));
+
+			renderer.setPixelRatio(window.devicePixelRatio);
+
+			renderer.setSize(window.innerWidth, window.innerHeight);
+
+			// Add the output of the renderer
+
+			document.body.appendChild(renderer.domElement);
+
+			// Render the scene
+
+			renderer.render(scene, camera);
+		}
+
+		function addCubeToScene(l, x, y, z, rgb, scene) {
+
+			var geometry = new THREE.BoxGeometry(l, l, l);
+
+			material = new THREE.MeshLambertMaterial({ color: rgb });
+
+			var cube = new THREE.Mesh(geometry, material)
+
+			cube.position.x = x;
+			cube.position.y = y;
+			cube.position.z = z;
+
+			scene.add(cube);
+		}
+
+		window.onload = init
+
+	</script>
+
+</body>
+
+</html>

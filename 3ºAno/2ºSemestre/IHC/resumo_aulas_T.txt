@@ -1,0 +1,34 @@
+--------------------------------- 2ª Semana: ------------------------------------
+
+Ergonomia 	-> Focado em aspetos físicos
+Fatores humanos -> Focado em aspetos cognitivos
+
+Design de sistemas interativos:
+ - Há partes que não sao controladas, por exemplo, o utilizador
+ - O utilizador pode ser complexo, desconhecido e não se consegue controlá-lo
+
+Standard de Usabilidade:
+
+- Efetivo
+- Eficiente
+- Satisfação
+- Liberdade de risco
+- Capacidade de ser usado em diferentes contextos (sites em diferentes dispositivos)
+	
+
+User Experience (UX):
+- Perceções e respostas de uma pessoa resultantes do uso de um produto ou serviço
+
+Paradigmas:
+- Exemplos de algo cuja interação foi melhorada ao longo da história
+
+Exemplos de Paradigmas:
+
+- Video Display Unites	(Cartões para ler e correr programas)
+- Time sharing		(Partilha de terminais)
+- WIMP			(Ícones, menus, ponteiros como temos agora no Windows)
+- Direct manipulation	(Escrever na tela e aparecer)
+- WWW			(World Wide Web)
+- Ubiquitous computing	(Frigoríficos com dados do que têm dentro, controlo de aquecimento, 
+Assistentes de voz)
+- Weareble computing 	(Smartwatches, google glasses...)

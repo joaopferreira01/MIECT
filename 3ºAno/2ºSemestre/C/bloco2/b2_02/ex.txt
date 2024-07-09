@@ -1,0 +1,11 @@
+antlr4-build (para a gramatica)
+antlr4-test -gui (escrever expressão, dar enter e control+d => abre arvore)
+antlr4-test (escrever expressão, dar enter e control+d => verifica se funfa)
+
+
+antlr4-build
+antlr4-main -visitor Execute.java (seguido de antlr4-run) => PRA TESTAR MM
+
+
+b2_06 | execute.java | linha 14
+

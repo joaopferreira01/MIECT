@@ -1,0 +1,114 @@
+\hypertarget{ull_8h}{}\doxysection{ull.\+h File Reference}
+\label{ull_8h}\index{ull.h@{ull.h}}
+
+
+A unidirectional linked-\/list, whose elements are registers composed of a 32-\/bit unsigned integer, representing a student number, and a string, used to store the student name.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for ull.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=133pt]{ull_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ull_8cpp_a0fc33c335931f53e713d60c779aa1f67}\label{ull_8cpp_a0fc33c335931f53e713d60c779aa1f67}} 
+void {\bfseries ull\+::reset} ()
+\begin{DoxyCompactList}\small\item\em Delete all registers in the list and initialize it. \end{DoxyCompactList}\item 
+void {\bfseries ull\+::load} (const char $\ast$fname)
+\begin{DoxyCompactList}\small\item\em Fill list with contents of given file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{ull_8cpp_a0d47837e98e42e737b5cd2c9e64a0796}\label{ull_8cpp_a0d47837e98e42e737b5cd2c9e64a0796}} 
+void {\bfseries ull\+::print} ()
+\begin{DoxyCompactList}\small\item\em Print the list\textquotesingle{}s registers in ascending order of the {\ttfamily nmec} field. \end{DoxyCompactList}\item 
+void {\bfseries ull\+::insert} (uint32\+\_\+t nmec, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Insert a new register in the list. \end{DoxyCompactList}\item 
+const char $\ast$ {\bfseries ull\+::query} (uint32\+\_\+t nmec)
+\begin{DoxyCompactList}\small\item\em Get the name of a student given its nmec. \end{DoxyCompactList}\item 
+void {\bfseries ull\+::remove} (uint32\+\_\+t nmec)
+\begin{DoxyCompactList}\small\item\em Remove a register from the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A unidirectional linked-\/list, whose elements are registers composed of a 32-\/bit unsigned integer, representing a student number, and a string, used to store the student name. 
+
+The following operations are defined\+: \begin{DoxyItemize}
+\item insertion of a register \item query of a name by number \item removal of a register \item reset of the list \item print the list contents sorted by number or name \item load list from file\end{DoxyItemize}
+\begin{DoxyAuthor}{Author}
+(2022) Artur Pereira $<$artur at ua.\+pt$>$ 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ull_8cpp_a68ab471af618f9150fe424ac8fcac342}\label{ull_8cpp_a68ab471af618f9150fe424ac8fcac342}} 
+\index{ull.h@{ull.h}!insert@{insert}}
+\index{insert@{insert}!ull.h@{ull.h}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily void ull\+::insert (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{nmec,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Insert a new register in the list. 
+
+
+\begin{DoxyItemize}
+\item The list should be kept in ascending order of the {\ttfamily nmec} field
+\item A dynamic duplicate of the name should be done 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nmec} & The student\textquotesingle{}s number \\
+\hline
+\mbox{\texttt{ in}}  & {\em name} & The student\textquotesingle{}s name \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\mbox{\Hypertarget{ull_8cpp_a0459710b12ed8b8308b2436f6fc4f2ab}\label{ull_8cpp_a0459710b12ed8b8308b2436f6fc4f2ab}} 
+\index{ull.h@{ull.h}!load@{load}}
+\index{load@{load}!ull.h@{ull.h}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void ull\+::load (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname }\end{DoxyParamCaption})}
+
+
+
+Fill list with contents of given file. 
+
+The file is just a two-\/columns table, using a semi-\/colon as separator, constaining a name and a number. The name can be composed of several words. 
+\begin{DoxyParams}{Parameters}
+{\em fname} & Path to the file to read from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ull_8cpp_ae70911e91b7ee38da7c51ccd6f9d3605}\label{ull_8cpp_ae70911e91b7ee38da7c51ccd6f9d3605}} 
+\index{ull.h@{ull.h}!query@{query}}
+\index{query@{query}!ull.h@{ull.h}}
+\doxysubsubsection{\texorpdfstring{query()}{query()}}
+{\footnotesize\ttfamily const char $\ast$ ull\+::query (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{nmec }\end{DoxyParamCaption})}
+
+
+
+Get the name of a student given its nmec. 
+
+The list must be traversed in order to find the given nmec and the corresponding name should be returned 
+\begin{DoxyParams}{Parameters}
+{\em nmec} & The nmec to be searched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the corresponding name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ull_8cpp_a791ad28330b26d7330b95baa2ed2a7d1}\label{ull_8cpp_a791ad28330b26d7330b95baa2ed2a7d1}} 
+\index{ull.h@{ull.h}!remove@{remove}}
+\index{remove@{remove}!ull.h@{ull.h}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void ull\+::remove (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{nmec }\end{DoxyParamCaption})}
+
+
+
+Remove a register from the list. 
+
+The list must be traversed in order to find the register to be removed 
+\begin{DoxyParams}{Parameters}
+{\em nmec} & The nmec associated to the register to be removed \\
+\hline
+\end{DoxyParams}

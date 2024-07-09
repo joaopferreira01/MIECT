@@ -1,0 +1,13 @@
+Perguntas IC
+1)Indique quais são as principais razões para a utilização do espaço de cor YUV/YCbCr, em vez do espaço RGB em codificação de imagem e video.
+No YUV a codificação pode ser feita de forma muito mais eficiente e banda ocupada pela yuv para a representação da mesma informação é menor
+
+YUV color-spaces are a more efficient coding and reduce the bandwidth more than RGB capture can.
+
+2)Explique os fenomenos de mascaramento simultaneo e mascaramento temporal em audio e indique de que forma eles podem ser usados em codificação.
+
+
+O mascaramento simultâneo é um fenômeno no domínio da frequência
+onde um sinal de baixo nível pode tornar-se inaudível porque é mascarado por uma frequencia identica e forte do sinal.
+sinal (mascarador).
+

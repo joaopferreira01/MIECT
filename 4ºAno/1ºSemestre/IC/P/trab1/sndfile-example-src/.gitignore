@@ -1,0 +1,15 @@
+# Ignore build files
+CMakeFiles/
+CMakeCache.txt
+.vscode
+
+# Ignore binaries and other build artifacts
+*.o
+*.
+*.a
+*.so
+*.dylib
+*.out
+*.exe
+
+build/

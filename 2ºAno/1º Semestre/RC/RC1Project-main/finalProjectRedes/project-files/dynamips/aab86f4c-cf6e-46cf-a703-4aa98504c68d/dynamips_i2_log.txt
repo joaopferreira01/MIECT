@@ -1,0 +1,79 @@
+Dec 06 10:53:34.920 HYPERVISOR: Release 0.2.17-amd64/Darwin (tag 2017072410)
+Dec 06 10:53:34.921 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 63983.
+Dec 06 10:53:34.934 HYPERVISOR: exec_cmd: hypervisor version 
+Dec 06 10:53:34.935 HYPERVISOR: exec_cmd: hypervisor working_dir /Users/joaoafonso/Desktop/project/finalProjectRedes/project-files/dynamips 
+Dec 06 10:53:34.936 GENERAL: working_dir=/Users/joaoafonso/Desktop/project/finalProjectRedes/project-files/dynamips
+Dec 06 10:53:34.937 HYPERVISOR: exec_cmd: hypervisor working_dir /Users/joaoafonso/Desktop/project/finalProjectRedes/project-files/dynamips/de74dafa-08db-4e0a-aa8b-01ad136ba3e1 
+Dec 06 10:53:34.937 GENERAL: working_dir=/Users/joaoafonso/Desktop/project/finalProjectRedes/project-files/dynamips/de74dafa-08db-4e0a-aa8b-01ad136ba3e1
+Dec 06 10:53:34.938 HYPERVISOR: exec_cmd: vm create R1 3 c3725 
+Dec 06 10:53:34.939 VM: VM R1 created.
+Dec 06 10:53:34.940 HYPERVISOR: exec_cmd: vm set_con_tcp_port R1 5016 
+Dec 06 10:53:34.941 HYPERVISOR: exec_cmd: c3725 get_mac_addr R1 
+Dec 06 10:53:34.943 HYPERVISOR: exec_cmd: vm set_disk0 R1 0 
+Dec 06 10:53:34.944 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 06 10:53:34.945 HYPERVISOR: exec_cmd: vm set_idle_pc R1 0x60a68e70 
+Dec 06 10:53:34.947 HYPERVISOR: exec_cmd: vm set_ios R1 /Users/joaoafonso/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image 
+Dec 06 10:53:34.949 HYPERVISOR: exec_cmd: c3725 set_mac_addr R1 c203.1c85.0000 
+Dec 06 10:53:34.960 HYPERVISOR: exec_cmd: vm set_nvram R1 256 
+Dec 06 10:53:35.045 HYPERVISOR: exec_cmd: vm set_ram R1 256 
+Dec 06 10:53:35.677 HYPERVISOR: exec_cmd: nio create_udp udp-e709d318-1b67-4ab3-af3d-1a335d14898c 10004 127.0.0.1 10005 
+Dec 06 10:53:35.906 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R1 0 0 udp-e709d318-1b67-4ab3-af3d-1a335d14898c 
+Dec 06 10:53:35.907 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 06 10:53:36.038 HYPERVISOR: exec_cmd: nio create_udp udp-65add4a6-e3d4-42cf-8088-9e48dfdf53f4 10008 127.0.0.1 10009 
+Dec 06 10:53:36.041 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R1 0 1 udp-65add4a6-e3d4-42cf-8088-9e48dfdf53f4 
+Dec 06 10:53:36.042 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 06 10:54:50.949 HYPERVISOR: exec_cmd: vm create Ghost 0 c3725 
+Dec 06 10:54:50.951 VM: VM Ghost created.
+Dec 06 10:54:50.952 HYPERVISOR: exec_cmd: vm set_ios Ghost /Users/joaoafonso/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image 
+Dec 06 10:54:50.953 HYPERVISOR: exec_cmd: vm set_ghost_status Ghost 1 
+Dec 06 10:54:50.953 HYPERVISOR: exec_cmd: vm set_ghost_file Ghost /Users/joaoafonso/Desktop/project/finalProjectRedes/project-files/dynamips/c3725-advipservicesk9-mz.124-21.image-256.ghost 
+Dec 06 10:54:50.954 HYPERVISOR: exec_cmd: vm set_ram Ghost 256 
+Dec 06 10:54:50.954 HYPERVISOR: exec_cmd: vm get_status Ghost 
+Dec 06 10:54:50.955 HYPERVISOR: exec_cmd: vm set_config Ghost configs/i0_startup-config.cfg 
+Dec 06 10:54:50.955 HYPERVISOR: exec_cmd: vm start Ghost 
+Dec 06 10:54:51.307 HYPERVISOR: exec_cmd: vm get_status Ghost 
+Dec 06 10:54:51.309 HYPERVISOR: exec_cmd: vm stop Ghost 
+Dec 06 10:54:51.560 VM: VM Ghost shutdown.
+Dec 06 10:54:51.561 HYPERVISOR: exec_cmd: vm extract_config Ghost 
+Dec 06 10:54:51.564 HYPERVISOR: exec_cmd: vm clean_delete Ghost 
+Dec 06 10:54:51.564 VM: VM Ghost destroyed.
+Dec 06 10:54:51.567 HYPERVISOR: exec_cmd: vm set_ghost_status R1 2 
+Dec 06 10:54:51.567 HYPERVISOR: exec_cmd: vm set_ghost_file R1 /Users/joaoafonso/Desktop/project/finalProjectRedes/project-files/dynamips/c3725-advipservicesk9-mz.124-21.image-256.ghost 
+Dec 06 10:54:51.568 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 06 10:54:51.568 HYPERVISOR: exec_cmd: vm set_config R1 configs/i3_startup-config.cfg 
+Dec 06 10:54:51.568 HYPERVISOR: exec_cmd: vm start R1 
+Dec 06 10:59:21.836 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 06 10:59:21.841 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 06 11:07:51.858 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 06 11:07:51.865 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 06 13:15:40.942 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 06 13:15:40.943 HYPERVISOR: exec_cmd: vm stop R1 
+Dec 06 13:15:41.056 VM: VM R1 shutdown.
+Dec 06 13:15:41.059 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 06 16:56:58.301 HYPERVISOR: exec_cmd: vm set_ghost_status R1 2 
+Dec 06 16:56:58.304 HYPERVISOR: exec_cmd: vm set_ghost_file R1 /Users/joaoafonso/Desktop/project/finalProjectRedes/project-files/dynamips/c3725-advipservicesk9-mz.124-21.image-256.ghost 
+Dec 06 16:56:58.305 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 06 16:56:58.308 HYPERVISOR: exec_cmd: vm set_config R1 configs/i3_startup-config.cfg 
+Dec 06 16:56:58.309 HYPERVISOR: exec_cmd: vm start R1 
+Dec 06 17:42:44.959 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 06 17:42:44.960 HYPERVISOR: exec_cmd: vm stop R1 
+Dec 06 17:42:45.051 VM: VM R1 shutdown.
+Dec 06 17:42:45.054 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 07 17:47:50.238 HYPERVISOR: exec_cmd: vm set_ghost_status R1 2 
+Dec 07 17:47:50.240 HYPERVISOR: exec_cmd: vm set_ghost_file R1 /Users/joaoafonso/Desktop/project/finalProjectRedes/project-files/dynamips/c3725-advipservicesk9-mz.124-21.image-256.ghost 
+Dec 07 17:47:50.241 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 07 17:47:50.241 HYPERVISOR: exec_cmd: vm set_config R1 configs/i3_startup-config.cfg 
+Dec 07 17:47:50.241 HYPERVISOR: exec_cmd: vm start R1 
+Dec 08 10:22:27.036 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 08 10:22:27.039 HYPERVISOR: exec_cmd: vm stop R1 
+Dec 08 10:22:27.188 VM: VM R1 shutdown.
+Dec 08 10:22:27.190 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 08 11:33:15.584 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 08 11:33:15.589 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 08 11:33:16.151 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 08 11:33:16.154 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 08 11:33:16.156 HYPERVISOR: exec_cmd: vm delete R1 
+Dec 08 11:33:16.159 VM: VM R1 destroyed.
+Dec 08 11:33:16.162 HYPERVISOR: exec_cmd: hypervisor stop 
+Dec 08 11:33:16.652 HYPERVISOR: Stopped.
+Dec 08 11:33:16.653 GENERAL: reset done.

@@ -1,0 +1,89 @@
+EXERCICIO 1
+
+ALINEA A
+
+ALINEA B
+
+ALINEA C
+
+Corresponde à parte do investimento que pode ser recuperada no final da vida útil do 
+investimento isto acontece porque os equipamentos e instalações ainda têm valor de venda 
+no mercado.
+
+
+EXERCICIO 2
+
+A) Verdadeiro, O VAL mede a rentabilidade do investimento em termos absolutos e a TIR em 
+termos relativos. A TIR sofre de algumas limitações tais como a existências de múltiplas
+taxas, pressupostos de reinvestimento, existência de alternativas incompletas e quando 
+temos projetos com valor de investimento inicial muito diferente (aí o VAL é melhor 
+alternativa)
+
+B) Verdadeiro, quando estamos na presença de um só investimento, basta que um 
+dos critérios de escolha diga que sim à aceitação para os outros levarem à mesma conclusão:
+
+Val > 0 => Viável => TIR > r  => IR > 1 => PRC < n
+
+C) Verdadeiro, a análise estratégica fornece as ferramentas de base às decisões que se 
+tomam para implementar os projetos, através da análise ao ambiente interno e externo à 
+empresa que fornecem as informações necessárias aos gestores sobre a necessidade e 
+oportunidade de investimento, as decisões de desinvestimento, a possibilidade de recurso 
+a fluxos financeiros, a viabilidade do projeto, etc
+
+
+EXERCICIO 3
+
+Custo de equipamento e instalações -> 350.000€
+
+Ao final de um ano estima-se ascensão de 400.000€ e no final os equipamentos não têm valor
+
+Custo de oportunidade associado a uma aplicação sem risco é de 2,5%
+
+O prémio de risco exigido é de 6,5%
+
+Logo k = 9% => 0,09
+
+-350.000 + 400.000/(1+k) = 16.972
+
+
+EXERCICIO 4
+
+VAL = 400.000€
+TIR = 8%
+PRC = 2 anos e 4 meses
+
+ALINEA A
+
+O projeto é viável porque VAL>0 e um período de recuperação razoável. 
+
+
+ALINEA B
+
+A afirmação da taxa de atualização é falsa, uma vez que sempre que o VAL é positivo, a TIR é
+superior ao custo de oportunidade do capital.
+
+
+EXERCICIO 5
+
+ALINEA A
+
+Só representar os valores numa tabela
+
+ALINEA B
+
+Proj A:
+
+-1000 + 150/1,08^1 + 250/1,08^2 + 250/1,08^3.... = 117,93
+
+Proj B:
+
+-1000 + 300/1,08^1 + 300/1,08^2 + 270/1,08^3.... = 118,19
+
+ALINEA C
+
+Investiria no projeto B visto que o valor do VAL é maior que no projeto A
+
+
+EXERCICIO 6
+
+

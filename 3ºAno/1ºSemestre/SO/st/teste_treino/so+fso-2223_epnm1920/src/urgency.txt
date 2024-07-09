@@ -1,0 +1,72 @@
+1º -> A seguir ao HospitalData, l52, colocar um struct:
+
+typedef struct
+{
+   unsigned int ids; 
+} ARGV;
+
+2º -> A seguir ao void random_wait(), l69, colocar dois static:
+
+    static pthread_mutex_t patientwait =PTHREAD_MUTEX_INITIALIZER;
+    static pthread_cond_t patientwaitcond = PTHREAD_COND_INITIALIZER; 
+
+3º -> Fazer alterações no nurse_iteraction:
+
+    É preciso colocar asterisco antes do nome da função e nos argumentos fica(void* argp)
+    int *argv = (int*)argp;
+    int id = *argv;
+    Colocar tudo dentro de um while e dar return a NULL;
+
+4º -> Fazer a mesma alteração no doctor_iteration:
+
+    Fazer exatamente a mesma merda de cima
+
+5º -> Fazer alteração no patient_wait_end_of_consultation:
+
+    mutex_lock(&patientwait);
+
+    while( hd->all_patients[id].done != 1)
+    {
+        cond_wait(&patientwaitcond, &patientwait);
+    }
+
+    mutex_unlock(&patientwait);
+
+6º -> Fazer alteração no patient_life:
+    
+    Copiar passo 3 (sem colocar while, mas com return NULL;)
+
+7º -> Adicionar linhas a seguir ao init_simulation:
+
+    pthread_t patient_thread[npatients]; 
+    pthread_t doctor_thread[ndoctors];
+    pthread_t nurse_thread[nnurses];
+    ARGV patient_args[npatients];
+    ARGV doctor_args[ndoctors];
+    ARGV nurse_args[nnurses];
+    uint32_t i;
+
+
+8º -> A seguir às linhas adicionadas, fazer for loops:
+    for(i = 0; i < ndoctors; i++)
+    {
+        doctor_args[i].ids = i;
+        thread_create(&doctor_thread[i], NULL, doctor_iteration, &doctor_args[i]);
+    }
+
+    for(i = 0; i < npatients; i++)
+    {
+        patient_args[i].ids = i;
+        thread_create(&patient_thread[i], NULL, patient_life, &patient_args[i]);
+    }
+
+    for(i = 0; i < nnurses; i++)
+    {
+        nurse_args[i].ids = i;
+        thread_create(&nurse_thread[i], NULL, nurse_iteration, &nurse_args[i]);
+    }
+
+    for(i = 0; i < npatients; i++)
+    {
+        thread_join(patient_thread[i], NULL);
+    }

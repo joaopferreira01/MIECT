@@ -1,0 +1,2 @@
+Em SQL existe um operador que implemente a operaçãp algébrica de divisão(.|.) => F
+

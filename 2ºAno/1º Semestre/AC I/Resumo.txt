@@ -1,0 +1,65 @@
+li $v0, num 		# num corresponde à instrução que deseja fazer
+li $t0, var		# Coloca a variável escolhida no registo $t0
+la $a0, var		# impressão quase sempre em $a0 da variável que está no .data (em cima)
+
+add -> Soma de dois registos
+addi -> Soma de um registo e uma constante
+sub -> Subtração de dois registos
+subi -> Subtração de um registo e uma constante
+
+Os comandos condicionais como por exemplo, beq, bnq, blt, entre outros, são definidos assim:
+			beq $t1,$t2,label 	(ou seja, são usados dois registos)
+
+
+
+sll $t0,$t1,n 		# faz shift left de $t1 n vezes para a esquerda//0001 -> 0010 -> 0100-> 1000
+Usar sll para multiplicar o número quando é preciso
+
+
+div $t0,$t1		# Faz a divisão inteira t0/t1
+	 		# A parte inteira vai para "lo" e o resto para "hi"
+mflo $t2		# Move o conteúdo para t2
+mfhi $t3		# Move o conteúdo para t3
+
+Usar o srl para fazer a divisão por potências de 2 (funciona de maneira inversa ao sll)
+
+str: .space 20 ( A string irá ter no máximo 20 caracteres )
+
+lw -> lê um conteúdo da RAM e coloca-o num registo da CPU
+sw -> escreve o conteudo de um registo da CPU na RAM
+
+sw $s0,myArray($zero)
+(Colocar conteudo do registo $s0 e colocar na posiçao $zero do myArray na memoria RAM
+
+.align 2 -> Para inteiros
+.space 16 -> Array com espaço para 4 inteiros (Cada inteiro ocupa 4B, 4*4 = 16)
+		Word ocupa 4B
+		Byte ocupa 1B
+		Character ocupa 0,5B
+
+Criar um array:
+
+la 	$t1,array
+sll	$t2,t0,2	# Saltar entre os elementos do array 1000+4 = 1004 (lista+i w/ i)
+addu	$t2,$t2,$t1	# Seleciona o elemento do array 
+
+Se o array for declarado no terminal:
+
+la	$a0,array
+li	$v0,read_string
+syscall
+la	$t2,array
+addu	$t3,$t2,(registo do i)
+lb	$t4,0($t3)	# Aqui vai faz load do valor introduzido
+
+
+faz sll primeiro pq i = 0, ou seja so executa na proxima iteração
+
+
+
+Apontamentos para o teste:
+
+Guião 3, exerc2a (números em binário)
+Guião 4, exerc2a (ponteiros)
+
+andi	$t1,$t0,0x80000000	(bit,value -> Numero em binario)

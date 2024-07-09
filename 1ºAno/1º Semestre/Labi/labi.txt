@@ -1,0 +1,89 @@
+-----RESPOSTAS LABI PRIMEIRO TESTE-----
+82
+--
+Anfitrião e Convidado
+--
+Aceder a ficheiros e diretórios
+--
+O comando "id" fornece mais informação que o comando "whoami"
+--
+cat/proc/cpuinfo
+--
+O ficheiro não será guardado pois os directórios etc/network não existem
+--
+Twoside e ?a4paper?
+--
+Identificar objetivo/audiência, listar os temas a abordar
+--
+á
+--
+Enquadramento, metedologia, resultados e conclusões
+--
+Utilizando o router "10.0.2.2", através do interface eth0
+--
+HTTP -> TCP -> IP -> Ethernet
+--
+06:00:27:35:fa:f1
+--
+Verificar o estado de execução das tarefas de um projeto
+--
+git pull
+--
+git clone -> git add -> git commit -> git push -> git pull
+--
+é um sistema distribuido de controlo de versoes
+--
+podem ser criados com &ccedil; &aacute; &eacute
+--
+img -> src -> /img
+--
+6
+--
+td -> tr -> th
+--
+html -> head -> title -> /title -> /head -> body -> h1 -> /h1-> /body -> /html
+--
+.b
+--
+px, em, pt, mm, in
+--
+uma marca style no documento html ou o atributo style na respetiva marca
+--
+verde
+--
+document.getElementById(id)
+--
+Nan
+--
+33, Iguais, Diferentes
+--
+confirm
+--
+console.log
+--
+<link rel ="stylesheet" type="text/css"href="mystyle.css">
+--
+mostrar a um programador o código numérico de um simbolo grafico
+--
+sudo kill 1049
+--
+É a primeira vez que se estabelece ligação ao servidor
+--
+Placa Wifi
+--
+bit, byte, short, word
+--
+false
+--
+cd ../../../usr/share
+--
+--utc
+--
+é um sistema distribuído de controlo de versões
+--
+\begin{enumerate} \item … \item … \end{enumerate}
+--
+<ul><li>...</li></ul>
+--
+/*  */
+--

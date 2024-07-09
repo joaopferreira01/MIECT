@@ -1,0 +1,7 @@
+#   p1.txt
+output "1 2 3";     # writes
+$v1="hello";        # store
+output $v1;         # writes
+output abc;         # writes
+$v1=bye;            # store
+output $v1;         # writes

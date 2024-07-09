@@ -1,0 +1,35 @@
+Considerando um sistema de gestão de informações sobre personagens, itens, habilidades
+e outras entidades, este sistema pretende oferecer:
+
+- Visualização de dados sobre um determinado jogador
+- Informações sobre campeonatos e equipas
+- Informações sobre personagens, itens, as duas habilidades etc
+- Ranking seja a nível de equipas (competitivo) ou pessoal
+- Informação sobre o histórico de jogos podendo ver detalhes dos mesmos
+- Detalhes sobre as transações efetuadas pelo utilizador (compras de skins, incrições etc.)
+
+3 - ESQUEMA RELACIONAL
+
+Jogador (ID_jogador, nome, idade, país, nick)
+Campeonato (ID_campeonato, nome, data, região)
+Equipe (ID_equipe, nome, país, região)
+Jogo (ID_jogo, data, ID_campeonato, ID_equipe_1, ID_equipe_2)
+Personagem (nome, habilidade_1, habilidade_2, habilidade_3, habilidade_4, habilidade_5)
+Item (nome, preço, categoria)
+Habilidade (nome, descrição)
+Ranking (ID_ranking, posição, pontuação, ID_jogador)
+Histórico_de_Jogos (ID_jogo, data, duração, resultado, ID_jogador)
+Transações (ID_transacao, tipo_compra, data, valor, ID_jogador)
+
+3.1 CHAVES PRIMARIAS / CHAVES SECUNDÁRIAS:
+
+    Jogador     (ID_jogador [PK], nome, idade, país, nick)
+    Campeonato  (ID_campeonato [PK], nome, data, região)
+    Equipe      (ID_equipe [PK], nome, país, região)
+    Jogo        (ID_jogo [PK], data, ID_campeonato [FK], ID_equipe_1 [FK], ID_equipe_2 [FK])
+    Personagem  (nome [PK], habilidade_1, habilidade_2, habilidade_3, habilidade_4, habilidade_5)
+    Item        (nome [PK], preço, categoria)
+    Habilidade  (nome [PK], descrição)
+    Ranking     (ID_ranking [PK], posição, pontuação, ID_jogador [FK])
+    Hist_jogos  (ID_jogo [PK, FK], data, duração, resultado, ID_jogador [FK])
+    Transações  (ID_transacao [PK], tipo_compra, data, valor, ID_jogador [FK])

@@ -1,0 +1,6 @@
+programa lança filho
+filho conta ate 10 no terminal
+pai espera q o filho acabe de contar
+pai encerra programa
+
+diria q esta no sig1.cpp

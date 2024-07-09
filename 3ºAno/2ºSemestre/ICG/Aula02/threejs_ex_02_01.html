@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<!--
+
+		threejs_ex_02_01.html
+
+		J. Madeira - March 2022
+
+		Adapted / simplified from the Learning Three.js book examples
+
+-->
+
+<head>
+
+	<title>three.js example</title>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+	<style>
+		body {
+
+			background-color: #ffffff;
+
+			/* To use the complete page */
+
+			margin: 0px;
+
+			overflow: hidden;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- Div which will hold the renderer output -->
+
+	<div id="WebGL-output"> </div>
+
+	<!-- The library --- Can be a local version -->
+
+	<script type="text/javascript" src="http://threejs.org/build/three.js"></script>
+
+	<!-- Javascript code that runs the Three.js example -->
+
+	<script type="text/javascript">
+
+		// Once everything is loaded, run this function
+
+		function init() {
+
+			// The SCENE
+
+			var scene = new THREE.Scene();
+
+			// The GROUND plane
+
+			var planeGeometry = new THREE.PlaneGeometry(60, 20);
+			var planeMaterial = new THREE.MeshBasicMaterial({ color: 0xcccccc });
+			var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+			// Rotate and position the plane
+
+			plane.rotation.x = -0.5 * Math.PI; // TODO: What happens if you comment out this line of code?
+			plane.position.x = 15;
+			plane.position.y = 0;
+			plane.position.z = 0;
+
+			// Add to the scene
+
+			scene.add(plane);
+
+			// Add coordinate AXIS to the scene
+
+			var axes = new THREE.AxesHelper(20);
+
+			scene.add(axes);
+
+			// A CUBE
+
+			var cubeGeometry = new THREE.BoxBufferGeometry(3, 3, 3);
+			var cubeMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+			var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+
+			
+
+
+			// Position the cube and add it to the scene
+			// TODO: What happens if you comment out the next three lines of code?
+			cube.position.x = -8;
+			cube.position.y = 1.5;
+			cube.position.z = -3;
+
+			scene.add(cube);
+
+			// A SPHERE
+			var sphereGeometry = new THREE.SphereGeometry(2.5, 12, 12);
+			var sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x7777ff });
+			var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+
+			// Position the sphere and add it to the scene
+			// TODO: What happens if you comment out the next three lines of code?
+			sphere.position.x = 15;
+			sphere.position.y = 5;
+			sphere.position.z = 7;
+
+			// TODO; What happens if you increase or decrease the radius of the sphere?
+
+			// add the sphere to the scene
+			scene.add(sphere);
+
+			// Triângulo
+
+			const cone_geometry = new THREE.ConeGeometry(6, 20, 10);
+			const cone_material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+			const cone = new THREE.Mesh(cone_geometry, cone_material);
+
+			// Position the sphere and add it to the scene
+			// TODO: What happens if you comment out the next three lines of code?
+			cone.position.x = 30;
+			cone.position.y = 0;
+			cone.position.z = -3;
+
+			scene.add(cone);
+
+
+			// Torus
+
+			const torus_geometry = new THREE.TorusGeometry(5, 2, 12, 12);
+			const torus_material = new THREE.MeshBasicMaterial({ color: 0xff00ff });
+			const torus = new THREE.Mesh(torus_geometry, torus_material);
+
+			torus.position.x = 12;
+			torus.position.y = 5;
+			torus.position.z = -3;
+
+			scene.add(torus);
+
+			const cyl_geometry = new THREE.CylinderGeometry(3, 3, 10, 15);
+			const cyl_material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+			const cylinder = new THREE.Mesh(cyl_geometry, cyl_material);
+
+			cylinder.position.x = 0;
+			cylinder.position.y = 0;
+			cylinder.position.z = -3;
+			scene.add(cylinder);
+
+
+			const prisma_geometry = new THREE.CylinderGeometry(1, 3, 10, 25);
+			const prisma_material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+			const prisma = new THREE.Mesh(prisma_geometry, prisma_material);
+
+			prisma.position.x = 35;
+			prisma.position.y = 5;
+			prisma.position.z = 5;
+
+			scene.add(prisma);
+
+
+			// TODO; What happens if you increase or decrease the radius of the sphere?
+
+			// add the sphere to the scene
+
+
+			// The CAMERA
+
+			// --- Where the viewer is and how he is looking at the scene
+
+			var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+			// Position the camera
+
+			camera.position.x = -30;
+			camera.position.y = 40;
+			camera.position.z = 30;
+
+			// Point the camera to the center of the scene
+
+			camera.lookAt(scene.position);
+
+			scene.add(camera)
+
+			// The RENDERER --- To display the scene on the Web page
+
+			var renderer = new THREE.WebGLRenderer({ antialias: true });
+
+			renderer.setClearColor(new THREE.Color(0xffffff));
+
+			renderer.setPixelRatio(window.devicePixelRatio);
+
+			renderer.setSize(window.innerWidth, window.innerHeight);
+
+			// Add the output of the renderer to the html element
+
+			document.getElementById("WebGL-output").appendChild(renderer.domElement);
+
+			// Render the scene
+
+			renderer.render(scene, camera);
+
+		}
+
+		window.onload = init
+
+	</script>
+
+</body>
+
+</html>

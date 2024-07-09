@@ -1,0 +1,4 @@
+Basicamente as perguntas são todas iguais, só mudam os dados
+
+Pergunta 6b generaliza o guião
+Pergunta 6c é importante por ter um for loop
