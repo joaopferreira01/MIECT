@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Map - Data Visualization</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; overflow: hidden; }
+    .country { stroke: #333; stroke-width: 0.5px; }
+    .active { fill: #ffcc00; }
+    .popup {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      font-size: 14px;
+      display: none;
+      z-index: 10;
+    }
+    .popup h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+    .popup p {
+      margin: 5px 0;
+    }
+    svg {
+      display: block;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      background-color: #333;
+      padding: 10px;
+    }
+    .navbar button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .navbar button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <button id="maleBtn">Male</button>
+    <button id="femaleBtn">Female</button>
+  </div>
+
+  <div id="popup" class="popup"></div>
+
+  <script>
+    var width = window.innerWidth, height = window.innerHeight;
+    var selectedGender = 'male';  // Variável para manter o gênero selecionado (inicialmente 'male')
+
+    // Ajustando a escala e tradução da projeção para centralizar o mapa
+    var projection = d3.geoMercator()
+      .scale(200) // Aumenta a escala do mapa para preencher a tela
+      .translate([width / 2, height / 1.5]); // Ajusta a posição do mapa mais centralizado
+
+    var path = d3.geoPath().projection(projection);
+
+    var svg = d3.select("body").append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    // Definir um esquema de cores para os países com base na taxa de obesidade
+    var colorScale = d3.scaleQuantize()
+      .domain([0, 50]) // Define o intervalo de dados, como taxas de obesidade
+      .range(d3.schemeBlues[9]); // Usa um esquema de cores com 9 tons de azul
+
+    // Carrega o mapa e os dados do CSV
+    Promise.all([
+      d3.json("https://d3js.org/world-110m.v1.json"),  // Mapa mundial
+      d3.csv("dataset/dataset.csv")               // CSV com os dados
+    ]).then(function([worldData, csvData]) {
+
+      console.log("CSV Data Loaded: ", csvData);
+      
+      var countries = topojson.feature(worldData, worldData.objects.countries).features;
+
+      // Cria um dicionário com base no CSV usando o ISO Code como chave
+      var dataByCountry = {};
+      csvData.forEach(function(d) {
+        if (d['ISO Code']) {
+          if (!dataByCountry[d['ISO Code']]) {
+            dataByCountry[d['ISO Code']] = { children: {}, adult: {} };
+          }
+          dataByCountry[d['ISO Code']][d.Group.toLowerCase()][d.Gender.toLowerCase()] = d;
+        }
+      });
+      
+      console.log("Data By Country: ", dataByCountry); // Depuração para garantir que os dados estejam corretos
+
+      svg.selectAll("path")
+        .data(countries)
+        .enter().append("path")
+        .attr("class", "country")
+        .attr("d", path)
+        .attr("fill", function(d) {
+          var countryCode = d.id;  // Este é o código ISO numérico do país do GeoJSON
+          var countryData = dataByCountry[countryCode];  // Busca o código ISO no CSV
+          
+          return countryData ? colorScale(countryData.adult[selectedGender]['Obesity Rate (%)']) : "#ccc";  // Aplica a cor ou cinza se não houver dados
+        })
+        .on("click", function(event, d) {
+          var countryCode = d.id;  // Código ISO numérico do país
+          var countryData = dataByCountry[countryCode];  // Busca os dados CSV correspondentes
+
+          if (countryData) {
+            var popup = d3.select("#popup");
+
+            // Verificações para evitar 'undefined'
+            var footballMale = countryData.children.male['Football (%)'] || 'N/A';
+            var basketballMale = countryData.children.male['Basketball (%)'] || 'N/A';
+            var runningMale = countryData.children.male['Running (%)'] || 'N/A';
+
+            var footballFemale = countryData.children.female['Football (%)'] || 'N/A';
+            var basketballFemale = countryData.children.female['Basketball (%)'] || 'N/A';
+            var runningFemale = countryData.children.female['Running (%)'] || 'N/A';
+
+            var obesityMale = countryData.adult.male['Obesity Rate (%)'] || 'N/A';
+            var obesityFemale = countryData.adult.female['Obesity Rate (%)'] || 'N/A';
+
+            popup.style("left", (event.pageX + 10) + "px")
+                 .style("top", (event.pageY - 50) + "px")
+                 .style("display", "block")
+                 .html(`
+                   <h3>${countryData.adult.male.Country}</h3>
+                   <p><strong>Children - Male:</strong> Football: ${footballMale}%, Basketball: ${basketballMale}%, Running: ${runningMale}%</p>
+                   <p><strong>Children - Female:</strong> Football: ${footballFemale}%, Basketball: ${basketballFemale}%, Running: ${runningFemale}%</p>
+                   <p><strong>Adult - Male:</strong> Football: ${countryData.adult.male['Football (%)']}%, Basketball: ${countryData.adult.male['Basketball (%)']}%, Running: ${countryData.adult.male['Running (%)']}%</p>
+                   <p><strong>Adult - Female:</strong> Football: ${countryData.adult.female['Football (%)']}%, Basketball: ${countryData.adult.female['Basketball (%)']}%, Running: ${countryData.adult.female['Running (%)']}%</p>
+                   <p><strong>Obesity Rate (Children - Male):</strong> ${countryData.children.male['Obesity Rate (%)']}%</p>
+                   <p><strong>Obesity Rate (Children - Female):</strong> ${countryData.children.female['Obesity Rate (%)']}%</p>
+                   <p><strong>Obesity Rate (Adult - Male):</strong> ${obesityMale}%</p>
+                   <p><strong>Obesity Rate (Adult - Female):</strong> ${obesityFemale}%</p>
+                 `);
+          }
+        })
+        .on("mouseleave", function() {
+          d3.select("#popup").style("display", "none");  // Esconde o pop-up ao sair
+        });
+
+      // Adiciona a funcionalidade de zoom e panning
+      var zoom = d3.zoom()
+        .scaleExtent([1, 8])  // Limita o nível de zoom
+        .on("zoom", function(event) {
+          svg.selectAll("path").attr("transform", event.transform);
+        });
+
+      svg.call(zoom);
+    }).catch(function(error) {
+      console.error("Erro ao carregar os dados: ", error);
+    });
+
+    // Função para atualizar as cores com base no gênero selecionado
+    function updateMapWithGender(gender) {
+      svg.selectAll("path").attr("fill", function(d) {
+        var countryCode = d.id;  // Código ISO numérico do país
+        var countryData = dataByCountry[countryCode];
+        return countryData ? colorScale(countryData.adult[gender]['Obesity Rate (%)']) : "#ccc";
+      });
+    }
+
+    // Eventos para mudar entre "Male" e "Female" sem recarregar a página
+    d3.select("#maleBtn").on("click", function() {
+      updateSelectedGender('male');
+      updateMapWithGender('male');
+    });
+
+    d3.select("#femaleBtn").on("click", function() {
+      updateSelectedGender('female');
+      updateMapWithGender('female');
+    });
+
+  </script>
+</body>
+</html>

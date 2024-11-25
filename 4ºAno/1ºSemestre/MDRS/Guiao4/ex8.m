@@ -23,7 +23,6 @@ end
 % sP{f}{i} is the i-th path of flow f
 % nSP(f) is the number of paths of flow f
 
-
 %% 8.b)
 % Compute the link loads using the first (shortest) path of each flow:
 sol= ones(1,nFlows);
@@ -185,4 +184,3 @@ fprintf('Avg. worst link load among all solutions= %.2f\n',somador/contador);
 
 % Obtemos uma rede diferente mas com um valor de worst link load igual à
 % solução anterior
-

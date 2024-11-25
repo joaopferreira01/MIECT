@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Countries - Sports and Obesity</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <script src="js/compare_script.js"></script> <!-- Coloque o caminho correto do arquivo -->
+  <link rel="stylesheet" href="style/compare.css"> <!-- Coloque o caminho correto do arquivo -->
+</head>
+
+<style>
+  /* Estilo do botão */
+  .btn {
+    position: relative;
+    /* Para posicionamento dos ícones */
+    outline: 0;
+    display: flex;
+    /* Usa flex para centralizar conteúdo */
+    align-items: center;
+    justify-content: center;
+    /* Centraliza o texto e os ícones */
+    background: #40B3A2;
+    min-width: 200px;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+    padding: 16px 20px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .btn:hover {
+    opacity: .95;
+  }
+
+  .btn .animation {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: ripple 0.6s linear infinite;
+  }
+
+  .btn .animation:first-of-type {
+    left: 10px;
+  }
+
+  .btn .animation:last-of-type {
+    right: 10px;
+  }
+
+  @keyframes ripple {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1),
+        0 0 0 20px rgba(255, 255, 255, 0.1),
+        0 0 0 40px rgba(255, 255, 255, 0.1),
+        0 0 0 60px rgba(255, 255, 255, 0.1);
+    }
+
+    100% {
+      box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1),
+        0 0 0 40px rgba(255, 255, 255, 0.1),
+        0 0 0 60px rgba(255, 255, 255, 0.1),
+        0 0 0 80px rgba(255, 255, 255, 0);
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Container principal */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Botão do dropdown */
+  .dropdown button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .dropdown button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+  /* Estilo da lista suspensa */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px 0;
+  }
+
+  /* Mostrar a lista suspensa quando o botão for clicado */
+  .dropdown.show .dropdown-content {
+    display: block;
+  }
+
+  /* Estilo dos itens da lista */
+  .dropdown-content label {
+    display: block;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown-content label:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Estilo dos checkboxes */
+  .dropdown-content input[type="checkbox"] {
+    margin-right: 10px;
+  }
+
+  /* Responsividade */
+  @media (max-width: 600px) {
+    .dropdown button {
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .dropdown-content {
+      min-width: 150px;
+    }
+
+  }
+</style>
+
+<body>
+
+  <!-- Barra de navegação -->
+  <div class="navbar">
+    <button onclick="window.location.href='index.html'">Global Map</button>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div class="content">
+    <h1>Compare Countries - Sports and Obesity</h1>
+    <p>Select the countries, age groups and genres you want to compare to view the differences in participation
+      in sports and obesity rate</p>
+
+    <!-- Contêiner de seleção -->
+    <div class="selection-container">
+      <!-- Dropdown de Países Selecionados -->
+      <div class="dropdown">
+        <button onclick="toggleDropdown()">Selected Countries</button>
+        <div class="dropdown-content" id="dropdown-content">
+           <!-- Campo de pesquisa -->
+          <input type="text" id="searchInput" placeholder="Search countries..." onkeyup="filterCountries()">
+          <label><input type="checkbox" value="United States" onchange="selectCountry(this)"> United States</label>
+          <label><input type="checkbox" value="Brazil" onchange="selectCountry(this)"> Brazil</label>
+          <label><input type="checkbox" value="Germany" onchange="selectCountry(this)"> Germany</label>
+          <label><input type="checkbox" value="India" onchange="selectCountry(this)"> India</label>
+          <label><input type="checkbox" value="Canada" onchange="selectCountry(this)"> Canada</label>
+          <label><input type="checkbox" value="Australia" onchange="selectCountry(this)"> Australia</label>
+          <label><input type="checkbox" value="Nigeria" onchange="selectCountry(this)"> Nigeria</label>
+          <label><input type="checkbox" value="China" onchange="selectCountry(this)"> China</label>
+          <label><input type="checkbox" value="United Kingdom" onchange="selectCountry(this)"> United Kingdom</label>
+          <label><input type="checkbox" value="Japan" onchange="selectCountry(this)"> Japan</label>
+          <label><input type="checkbox" value="South Africa" onchange="selectCountry(this)"> South Africa</label>
+          <label><input type="checkbox" value="Portugal" onchange="selectCountry(this)"> Portugal</label>
+          <label><input type="checkbox" value="Spain" onchange="selectCountry(this)"> Spain</label>
+          <label><input type="checkbox" value="Italy" onchange="selectCountry(this)"> Italy</label>
+          <label><input type="checkbox" value="France" onchange="selectCountry(this)"> France</label>
+          <label><input type="checkbox" value="Belgium" onchange="selectCountry(this)"> Belgium</label>
+          <label><input type="checkbox" value="Argentina" onchange="selectCountry(this)"> Argentina</label>
+          <label><input type="checkbox" value="Denmark" onchange="selectCountry(this)"> Denmark</label>
+          <label><input type="checkbox" value="Finland" onchange="selectCountry(this)"> Finland</label>
+          <label><input type="checkbox" value="Iceland" onchange="selectCountry(this)"> Iceland</label>
+          <label><input type="checkbox" value="Norway" onchange="selectCountry(this)"> Norway</label>
+          <label><input type="checkbox" value="Netherlands" onchange="selectCountry(this)"> Netherlands</label>
+          <label><input type="checkbox" value="Sweden" onchange="selectCountry(this)"> Sweden</label>
+          <label><input type="checkbox" value="Ukraine" onchange="selectCountry(this)"> Ukraine</label>
+          <label><input type="checkbox" value="Greece" onchange="selectCountry(this)"> Greece</label>
+          <label><input type="checkbox" value="Austria" onchange="selectCountry(this)"> Austria</label>
+          <label><input type="checkbox" value="Poland" onchange="selectCountry(this)"> Poland</label>
+          <label><input type="checkbox" value="Czech Republic" onchange="selectCountry(this)"> Czech Republic</label>
+          <label><input type="checkbox" value="Hungary" onchange="selectCountry(this)"> Hungary</label>
+          <label><input type="checkbox" value="Mexico" onchange="selectCountry(this)"> Mexico</label>
+          <label><input type="checkbox" value="Chile" onchange="selectCountry(this)"> Chile</label>
+          <label><input type="checkbox" value="Colombia" onchange="selectCountry(this)"> Colombia</label>
+          <label><input type="checkbox" value="Peru" onchange="selectCountry(this)"> Peru</label>
+          <!-- Adicione outros países conforme necessário -->
+        </div>
+        <div class="selected-tags" id="selected-tags"></div>
+      </div>
+    
+
+      <!-- Seleção de Gênero, Faixa Etária e Métricas -->
+      <div class="selection-group">
+        <h3>Gender</h3>
+        <label><input type="checkbox" value="Male" class="gender"> Male</label><br>
+        <label><input type="checkbox" value="Female" class="gender"> Female</label>
+
+        <h3>Age Group</h3>
+        <label><input type="checkbox" value="Children" class="age"> Child</label><br>
+        <label><input type="checkbox" value="Adult" class="age"> Adult</label>
+
+        <h3>Metrics</h3>
+        <label>
+          <input type="checkbox" value="General" class="metric">
+          Sports Particip. (%) <span class="color-dot" style="background-color: purple;"></span>
+        </label><br>
+        <label>
+        <label>
+          <input type="checkbox" value="Obesity Rate" class="metric">
+          Obesity (%) <span class="color-dot" style="background-color: orange;"></span>
+        </label><br>
+        <label>
+          <input type="checkbox" value="Football Participation" class="metric">
+          Football (%) <span class="color-dot" style="background-color: steelblue;"></span>
+        </label><br>
+        <label>
+          <input type="checkbox" value="Basketball Participation" class="metric">
+          Basketball (%) <span class="color-dot" style="background-color: red;"></span>
+        </label><br>
+        <label>
+          <input type="checkbox" value="Running Participation" class="metric">
+          Running (%) <span class="color-dot" style="background-color: green;"></span>
+        </label>
+
+
+      </div>
+    </div>
+
+    <!-- Botão de Geração de Gráficos -->
+    <!-- <button id="generate-btn">Generate Graphics</button> -->
+
+    <div class="content">
+      <button id="generate-btn" class="btn">
+        <i class="animation"></i>
+        Generate Graphics
+        <i class="animation"></i>
+      </button>
+    </div>
+
+    <!-- Contêiner para gráficos -->
+    <div id="charts-container" class="chart-container"></div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Maps - Data Visualization</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <script src="js/index_script.js"></script> <!-- Coloque o caminho correto do arquivo -->
+  <link rel="stylesheet" href="style/index.css"> <!-- Coloque o caminho correto do arquivo -->
+</head>
+
+<body>
+  <div class="navbar">
+    <button id="globalMapBtn" onclick="window.location.href='index.html'">Global Map</button>
+    <button id="compareBtn" onclick="window.location.href='compare.html'">Compare</button>
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label><input type="radio" class="filter" name="ageGroup" value="children" checked> Child</label>
+      <label><input type="radio" class="filter" name="ageGroup" value="adult"> Adult</label>
+    </div>
+    <div class="filter-group">
+      <label><input type="radio" class="filter" name="gender" value="male" checked> Male</label>
+      <label><input type="radio" class="filter" name="gender" value="female"> Female</label>
+    </div>
+
+    <button id="generateBtn" class="btn">
+      <i class="animation"></i>
+      Generate Graphics
+      <i class="animation"></i>
+    </button>
+
+    <button id="viewTop10Btn" class="btn">
+      <i class="animation"></i>
+      View Top 10
+      <i class="animation"></i>
+    </button>
+  </div>
+
+  <div class="title-container">
+    <div class="title-left">
+      <h2 class="title-text">Global Sports Participation Rate</h2>
+    </div>
+    <div class="title-right">
+      <h2 class="title-text">Global Obesity Rate</h2>
+    </div>
+  </div>
+
+  <div class="maps-container">
+    <div id="map1" class="map"></div>
+    <div id="map2" class="map"></div>
+  </div>
+
+  <div id="popup" class="popup"></div>
+
+  <!-- Modal para exibir os gráficos de Top 10 -->
+  <div id="top10Modal"
+    style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; background-color: white; box-shadow: 0px 4px 8px rgba(0,0,0,0.2); padding: 20px; border-radius: 8px; z-index: 1000;">
+    <button id="closeModalBtn"
+      style="float: right; background-color: transparent; border: none; font-size: 16px; cursor: pointer;">Close</button>
+    <div id="sportsChart"></div>
+    <div id="obesityChart" style="margin-top: 20px;"></div>
+  </div>
+</body>
+
+</html>
